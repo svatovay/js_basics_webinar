@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Homework</title>
+    <meta charset="UTF-8">
+    <title>Homework</title>
 </head>
 <body>
 <!--
@@ -29,9 +29,60 @@
 Необходимо для всех функций прописать комментарии jsdoc https://jsdoc.app/.
 -->
 <script>
-  "use strict";
+    "use strict";
 
-  // Здесь пишем решение, данный комментарий необходимо стереть.
+    console.log(addition(8, 2));
+    console.log(difference(8, 2));
+    console.log(difference(2, 8));
+    console.log(difference(8, 8));
+    console.log(multiplication(8, 2));
+    console.log(division(8, 2));
+
+    /**
+     * Adds the first and second operands.
+     * @addition
+     * @param {number} op_1 - The first operand.
+     * @param {number} op_2 - The second operand.
+     */
+    function addition(op_1, op_2) {
+        return op_1 + op_2;
+    }
+
+    /**
+     * Subtracts the smaller operand from the larger operand, return 0 if equal.
+     * @difference
+     * @param {number} op_1 - The first operand.
+     * @param {number} op_2 - The second operand.
+     */
+    function difference(op_1, op_2) {
+        if (op_1 > op_2) {
+            return op_1 - op_2;
+        } else if (op_2 > op_1) {
+            return op_2 - op_1;
+        } else {
+            return 0;
+        }
+    }
+
+    /**
+     * Returns the result of multiplying the operands.
+     * @multiplication
+     * @param {number} op_1 - The first operand.
+     * @param {number} op_2 - The second operand.
+     */
+    function multiplication(op_1, op_2) {
+        return op_1 * op_2;
+    }
+
+    /**
+     * Divides the first operand by the second.
+     * @division
+     * @param {number} op_1 - The first operand.
+     * @param {number} op_2 - The second operand.
+     */
+    function division(op_1, op_2) {
+        return op_1 / op_2;
+    }
 </script>
 </body>
 </html>
