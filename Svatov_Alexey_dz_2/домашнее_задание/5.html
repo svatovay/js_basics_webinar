@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Homework</title>
+</head>
+<body>
+<!--
+Обязательное задание.
+
+Необходимо скопировать и вставить в данный скрипт все функции из 4 задания.
+Необходимо реализовать функцию:
+mathOperation(arg1, arg2, operation);
+Параметры:
+arg1 - первое число.
+arg2 - второе число.
+operation - строка, которая содержит один символ из: "+", "-", "*", "/".
+Функция mathOperation должна вернуть результат операции, который был передан в
+параметр operation для двух первых аргументов (arg1 и arg2).
+Функция mathOperation должна использовать для вычисления функции из 4 задания.
+
+Примеры вызова функции:
+console.log(mathOperation(5, 3, "+")); // 8
+console.log(mathOperation(5, 3, ":)")); // NaN
+
+Функции mathOperation всегда передаются корректные числа, проверки на NaN,
+Infinity делать не нужно, однако, в случае если был передан некорректный
+аргумент в параметр operation, необходимо вернуть NaN.
+
+Необходимо для всех функций прописать комментарии jsdoc https://jsdoc.app/.
+-->
+<script>
+  "use strict";
+
+  console.log(mathOperation(5, 3, "+"));
+  console.log(mathOperation(5, 3, ":)"));
+
+  /**
+   * Specifies and calls a math function to be performed between two passed values, depending on the character passed.
+   * @mathOperation
+   * @param {number} arg1 - The first operand.
+   * @param {number} arg2 - The second operand.
+   * @param {string} operation - The type of mathematical operation to be performed.
+   */
+  function mathOperation(arg1, arg2, operation) {
+    switch (operation) {
+      case '+':
+        return addition(arg1, arg2);
+      case '-':
+        return difference(arg1, arg2);
+      case '*':
+        return multiplication(arg1, arg2);
+      case '/':
+        return division(arg1, arg2);
+      default:
+        return NaN;
+    };
+  }
+
+  /**
+   * Adds the first and second operands.
+   * @addition
+   * @param {number} op_1 - The first operand.
+   * @param {number} op_2 - The second operand.
+   */
+  function addition(op_1, op_2) {
+    return op_1 + op_2;
+  }
+
+  /**
+   * Subtracts the smaller operand from the larger operand, return 0 if equal.
+   * @difference
+   * @param {number} op_1 - The first operand.
+   * @param {number} op_2 - The second operand.
+   */
+  function difference(op_1, op_2) {
+    if (op_1 > op_2) {
+      return op_1 - op_2;
+    } else if (op_2 > op_1) {
+      return op_2 - op_1;
+    } else {
+      return 0;
+    }
+  }
+
+  /**
+   * Returns the result of multiplying the operands.
+   * @multiplication
+   * @param {number} op_1 - The first operand.
+   * @param {number} op_2 - The second operand.
+   */
+  function multiplication(op_1, op_2) {
+    return op_1 * op_2;
+  }
+
+  /**
+   * Divides the first operand by the second.
+   * @division
+   * @param {number} op_1 - The first operand.
+   * @param {number} op_2 - The second operand.
+   */
+  function division(op_1, op_2) {
+    return op_1 / op_2;
+  }
+</script>
+</body>
+</html>

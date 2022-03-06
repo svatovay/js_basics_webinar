@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+</head>
+<body>
+<!--
+Обязательное задание.
+
+Необходимо реализовать четыре функции, каждая функция должна принимать по два
+числа и выполнять одну из операций (каждая функция выполняет одну из них):
+1. Сложение
+2. Разность
+3. Умножение
+4. Деление
+
+Необходимо сделать так, чтобы функция вернула число, например выражение
+`console.log(sum(2, 6));` должно вывести число 8 в консоль (sum - функция
+сложения в данном примере, ваши названия функций могут отличаться).
+
+Округлять значения, которые возвращают функции не нужно, однако, обратите
+внимание на разность, функция должна вычесть из большего числа меньшее, либо
+вернуть 0, если числа равны.
+
+Функциям всегда передаются корректные числа, проверки на NaN, Infinity делать
+не нужно.
+
+Необходимо для всех функций прописать комментарии jsdoc https://jsdoc.app/.
+-->
+<script>
+    "use strict";
+
+    console.log(addition(8, 2));
+    console.log(difference(8, 2));
+    console.log(difference(2, 8));
+    console.log(difference(8, 8));
+    console.log(multiplication(8, 2));
+    console.log(division(8, 2));
+
+    /**
+     * Adds the first and second operands.
+     * @addition
+     * @param {number} op_1 - The first operand.
+     * @param {number} op_2 - The second operand.
+     */
+    function addition(op_1, op_2) {
+        return op_1 + op_2;
+    }
+
+    /**
+     * Subtracts the smaller operand from the larger operand, return 0 if equal.
+     * @difference
+     * @param {number} op_1 - The first operand.
+     * @param {number} op_2 - The second operand.
+     */
+    function difference(op_1, op_2) {
+        if (op_1 > op_2) {
+            return op_1 - op_2;
+        } else if (op_2 > op_1) {
+            return op_2 - op_1;
+        } else {
+            return 0;
+        }
+    }
+
+    /**
+     * Returns the result of multiplying the operands.
+     * @multiplication
+     * @param {number} op_1 - The first operand.
+     * @param {number} op_2 - The second operand.
+     */
+    function multiplication(op_1, op_2) {
+        return op_1 * op_2;
+    }
+
+    /**
+     * Divides the first operand by the second.
+     * @division
+     * @param {number} op_1 - The first operand.
+     * @param {number} op_2 - The second operand.
+     */
+    function division(op_1, op_2) {
+        return op_1 / op_2;
+    }
+</script>
+</body>
+</html>
