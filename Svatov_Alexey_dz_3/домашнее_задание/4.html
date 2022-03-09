@@ -44,7 +44,8 @@
     },
   ];
 
-  // Здесь пишем решение, данный комментарий необходимо стереть.
+  console.log(products.filter(element => {if (element.photos && element.photos.length > 0) {return element}}))
+  console.log(products.sort(function sortFn(elA, elB) {return (elA.price - elB.price)}))
 </script>
 </body>
 </html>
