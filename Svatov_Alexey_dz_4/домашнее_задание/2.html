@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Homework</title>
+    <meta charset="UTF-8">
+    <title>Homework</title>
 </head>
 <body>
 <!--
@@ -48,9 +48,112 @@
 4. Если непонятно условие - задайте вопрос.
 -->
 <script>
-  "use strict";
+    "use strict";
 
-  // Здесь пишем решение, данный комментарий необходимо стереть.
+    //ES5
+    function PostES5(author, text) {
+        this.author = author;
+        this.text = text;
+        this.datetime = this.makeDateTime();
+    };
+
+    PostES5.prototype.makeDateTime = function () {
+        const _ = Date();
+        return _.toLocaleString();
+        // return Date.now();
+    };
+
+    PostES5.prototype.edit = function (newText) {
+        this.text = newText;
+        this.datetime = this.makeDateTime();
+    };
+
+    function AttachedPostES5(author, text, highlighted = false) {
+        PostES5.call(this, author, text);
+        this.highlighted = highlighted;
+    };
+
+    AttachedPostES5.prototype = Object.create(PostES5.prototype);
+    AttachedPostES5.prototype.constructor = AttachedPostES5;
+
+    AttachedPostES5.prototype.makeTextHighlighted = function () {
+        this.highlighted = true;
+    };
+
+    const post1 = new PostES5('John', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, pariatur.');
+    console.log(post1.author);
+    console.log(post1.text);
+    console.log(post1.datetime);
+    post1.edit('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias ducimus eos non voluptates. ' +
+        'Accusamus culpa dignissimos ea, enim expedita optio.');
+    console.log(post1.text);
+    console.log(post1.datetime); // метод работает быстро, поэтому дата и время идентичны. Разница есть при Date.now().
+
+    const attachedPost1 = new AttachedPostES5('Max',
+        'APES5 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, pariatur.');
+    console.log(attachedPost1.author);
+    console.log(attachedPost1.text);
+    console.log(attachedPost1.datetime);
+    attachedPost1.edit('APES5 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias ducimus eos non voluptates. ' +
+        'Accusamus culpa dignissimos ea, enim expedita optio.');
+    console.log(attachedPost1.text);
+    console.log(attachedPost1.datetime); // метод работает быстро, поэтому дата и время идентичны. Разница есть при Date.now().
+    console.log(attachedPost1.highlighted);
+    attachedPost1.makeTextHighlighted();
+    console.log(attachedPost1.highlighted);
+
+    //ES6
+    class PostES6 {
+        constructor(author, text) {
+            this.author = author;
+            this.text = text;
+            this.datetime = this.makeDateTime();
+        };
+
+        makeDateTime() {
+            const _ = Date();
+            return _.toLocaleString();
+            // return Date.now();
+        };
+
+        edit(newText) {
+            this.text = newText;
+            this.datetime = this.makeDateTime();
+        };
+    };
+
+    class AttachedPostES6 extends PostES6 {
+        constructor(author, text, highlighted = false) {
+            super(author, text);
+            this.highlighted = highlighted;
+        };
+
+        makeTextHighlighted() {
+            this.highlighted = true;
+        };
+    };
+
+    const post2 = new PostES6('James', 'New Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, pariatur.');
+    console.log(post2.author);
+    console.log(post2.text);
+    console.log(post2.datetime);
+    post2.edit('New Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias ducimus eos non voluptates. ' +
+        'Accusamus culpa dignissimos ea, enim expedita optio.');
+    console.log(post2.text);
+    console.log(post2.datetime); // метод работает быстро, поэтому дата и время идентичны. Разница есть при Date.now().
+
+    const attachedPost2 = new AttachedPostES6('Emma',
+        'APES6 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, pariatur.');
+    console.log(attachedPost2.author);
+    console.log(attachedPost2.text);
+    console.log(attachedPost2.datetime);
+    attachedPost2.edit('APES6 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias ducimus eos non voluptates. ' +
+        'Accusamus culpa dignissimos ea, enim expedita optio.');
+    console.log(attachedPost2.text);
+    console.log(attachedPost2.datetime); // метод работает быстро, поэтому дата и время идентичны. Разница есть при Date.now().
+    console.log(attachedPost2.highlighted);
+    attachedPost2.makeTextHighlighted();
+    console.log(attachedPost2.highlighted);
 </script>
 </body>
 </html>
