@@ -34,6 +34,8 @@
   свойство classList у элементов.
    */
 
+  const dropDownItemEls = document.querySelectorAll(".dropdown-item");
+  dropDownItemEls.forEach(el => el.classList.add("super-dropdown"));
 
   /*
   2. У элемента с классом btn необходимо убрать класс "btn-secondary", если он
@@ -41,12 +43,16 @@
   не было.
    */
 
+  const btnEl = document.querySelector(".btn");
+  btnEl.classList.toggle("btn-secondary");
 
   /*
   3. Необходимо удалить класс "dropdown-menu" у элемента, у которого
   присутствует класс "menu".
    */
 
+  const menuEl = document.querySelector(".menu");
+  menuEl.classList.remove("dropdown-menu");
 
   /*
   4. Используя метод insertAdjacentHTML добавьте после div'a с классом
@@ -54,11 +60,15 @@
     <a href="#">link</a>
    */
 
+  const dropDownEl = document.querySelector(".dropdown > div");
+  dropDownEl.insertAdjacentHTML("afterbegin", "<a href=\"#\">link</a>");
 
   /*
   5. У элемента с id "dropdownMenuButton" замените id на "superDropdown".
    */
 
+  const dropDownMenuButtonEl = document.getElementById("dropdownMenuButton");
+  dropDownMenuButtonEl.id = "superDropdown";
 
   /*
   6. Добавьте атрибут data-dd со значением 3 элементу у которого существует
