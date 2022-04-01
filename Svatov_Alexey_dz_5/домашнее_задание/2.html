@@ -75,11 +75,15 @@
   атрибут "aria-labelledby" равный "dropdownMenuButton" используя dataset.
    */
 
+  const ariaLabelEl = document.querySelector("[aria-labelledby='dropdownMenuButton']");
+  ariaLabelEl.dataset.dd = 3;
 
   /*
   7. Удалите атрибут type у элемента с классом "dropdown-toggle".
    */
 
+  const dropDownToggleEl = document.querySelector(".dropdown-toggle");
+  dropDownToggleEl.removeAttribute("type");
 
   /*
   8. Выведите в консоль все имеющиеся атрибуты и их значения тега у которого
@@ -88,6 +92,10 @@
   Атрибут "class" содержит значение "btn btn-secondary dropdown-toggle"
    */
 
+  const lastTaskEl = document.querySelector(".btn, .dropdown-toggle").attributes;
+  for (let i = 0; i < lastTaskEl.length; i++) {
+    console.log(`Атрибут "${lastTaskEl[i].name}" содержит значение "${lastTaskEl[i].value}"`);
+  };
 
 </script>
 </body>
