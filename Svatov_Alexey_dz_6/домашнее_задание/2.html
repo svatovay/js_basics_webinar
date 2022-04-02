@@ -66,6 +66,10 @@
   также должен меняться.
   */
 
+  const inputFromEl = document.querySelector("[id='from']");
+  inputFromEl.addEventListener('input', () => {
+    document.querySelector("span").textContent = inputFromEl.value;
+  });
 
   /*
   2. При клике на кнопку с классом messageBtn необходимо элементу с классом
@@ -74,6 +78,12 @@
   2) поставить данному элементу стиль visibility в значение 'visible'.
    */
 
+  const msgBtnEl = document.querySelector(".messageBtn");
+  const msgEl = document.querySelector(".message");
+  msgBtnEl.addEventListener('click', () => {
+    msgEl.classList.add("animate__animated", "animate__fadeInLeftBig");
+    msgEl.style.visibility = "visible";
+  });
 
   /*
   3. Необходимо при отправке формы проверить, заполнены ли все поля в этой
@@ -87,6 +97,39 @@
   Если поле было чем-либо заполнено, подсветку (класс error) необходимо убрать.
    */
 
+  const inputEl = document.querySelector("input.form-control");
+  const selectEl = document.querySelector("select.form-control");
+  const btnSend = document.querySelector("form > button");
+  function marking(el) {
+    el.classList.add("error")
+  };
+  function turning(el) {
+    el.classList.remove("error")
+  };
+  btnSend.addEventListener('click', event => {
+    if (!inputEl.value) {
+        event.preventDefault();
+        marking(inputEl);
+      };
+    if (!selectEl.value) {
+      event.preventDefault();
+      marking(selectEl);
+    }
+  });
+  inputEl.addEventListener('input', inputEvent => {
+    if (!inputEvent.target.value) {
+      marking(inputEl);
+    } else {
+      turning(inputEl);
+    }
+  });
+  selectEl.addEventListener('input', selectEvent => {
+    if (!selectEvent.target.value) {
+      marking(selectEl);
+    } else {
+      turning(selectEl);
+    }
+  });
 
 </script>
 </body>
