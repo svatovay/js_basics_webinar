@@ -43,17 +43,32 @@
   1. Установите всем элементам с классом "productName" размер шрифта 24px.
    */
 
+  const productNameEls = document.querySelectorAll(".productName");
+  productNameEls.forEach(el => el.style.fontSize = `${24}px`);
 
   /*
   2. Установите всем элементам с классом "product" внешний отступ справа 50px.
    */
 
+  const productEls = document.querySelectorAll(".product");
+  productEls.forEach(el => el.style.marginRight= `${50}px`);
 
   /*
   3. При клике на кнопку "В корзину" название кнопки должно поменяться на
   "Добавлено" и кнопка должна стать неактивной.
    */
 
+  function modButton(el) {
+    if (el.textContent === "В корзину") {
+      el.addEventListener('click', () => {
+        el.textContent = "Добавлено";
+        el.disabled = true;
+      })
+    }
+  };
+
+  const buttonEls = document.querySelectorAll("button");
+  buttonEls.forEach(buttonEl => modButton(buttonEl));
 
   /*
   4. Создайте полную (глубокую) копию элемента с классом product, измените в
@@ -64,12 +79,24 @@
   должен правильно работать код из 3-го задания.
    */
 
+  const originProduct = productEls[productEls.length - 1];
+  const cloneProduct = originProduct.cloneNode(true);
+  cloneProduct.querySelector("div.productName").textContent = "Товар 4";
+  cloneProduct.querySelector("img").src = "https://picsum.photos/id/1080/200/300";
+  originProduct.insertAdjacentElement('afterend', cloneProduct);
+  originProduct.remove();
+  console.log(cloneProduct);
+  modButton(cloneProduct.querySelector("button"));
 
   /*
   5. По истечению 2 секунд с момента открытия страницы первый товар должен быть
   удален из html.
    */
 
+  function delProduct() {
+    productEls[0].remove()
+  };
+  window.setTimeout(delProduct, 2000);
 
 </script>
 </body>
