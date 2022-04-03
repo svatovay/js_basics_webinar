@@ -21,9 +21,21 @@
    * @param {number} height - Rectangle height
    * @return {Rectangle}
    */
-  function Rectangle() {
+  /*
+  Для решения была использована информация с раздела "Методы прототипа"
+  https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Classes
+   */
 
-  }
+  function Rectangle(width, height) {
+    this.width = width;
+    this.height = height;
+  };
+  Rectangle.prototype.calcArea = function () {
+    return this.width * this.height;
+  };
+  Rectangle.prototype.getArea = function () {
+    return this.calcArea();
+  };
 
   const r = new Rectangle(10, 20);
   console.log(r.width); // 10
