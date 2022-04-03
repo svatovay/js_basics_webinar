@@ -38,18 +38,53 @@
   golden, также такой класс должен ставиться всем звездам до нее слева.
   */
 
+  const starEls= document.querySelector(".stars_container");
+  function addGold(el) {
+    if (el.previousElementSibling) {
+      el.classList.add("golden")
+      addGold(el.previousElementSibling)
+    } else {
+      el.classList.add("golden")
+    }
+  };
+
+  for (const starEl of starEls.children) {
+    starEl.addEventListener('mouseover', () => {
+      addGold(starEl)
+    });
+  };
 
   /*
   2. Когда мы уводим курсор мыши от звезды, все поставленные классы из первого
   задания должны быть удалены.
    */
 
+  function delGold(el) {
+    if (el.previousElementSibling) {
+      el.classList.remove("golden")
+      delGold(el.previousElementSibling)
+    } else {
+      el.classList.remove("golden")
+    }
+  };
+
+  for (const starEl of starEls.children) {
+    starEl.addEventListener('mouseout', () => {
+      delGold(starEl)
+    });
+  };
 
   /*
   3. Когда мы переводим мышь от одной звезды к другой, у нас могут мигать
   звезды (временно могут становиться черными). Почему так? Напишите словами.
   Можем ли мы это исправить? Если да, то предложите решение.
   */
+
+  /*
+  Это связано с тем, что в childNodes есть элемент '#text "\n  "', разделяющий звёзды.
+  Из-за него и происходит "перескакивание".
+  Пробовал ставить setTimeout на удаление класса, но проблему это не решает и делает поведение кода некорректным.
+   */
 
 
 </script>
