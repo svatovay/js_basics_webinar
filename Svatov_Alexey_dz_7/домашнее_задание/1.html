@@ -54,12 +54,21 @@
   прописан в объекте panelText (вам необходимо определить самостоятельно, что
   общего между данной в html версткой и объектом ниже).
   */
+  
   const panelText = {
     T1: "Уверен, ты справишься с этим заданием!",
     X6: "Знаю, программирование это нелегко.",
     H99: "Однако, программирование, в итоге, принесет свои плоды.",
   };
 
+  const navLinkEls = document.querySelectorAll(".nav-link");
+  const divTextEl = document.querySelector("div.text");
+  navLinkEls.forEach(navLinkEl => navLinkEl.addEventListener('click', ({target}) => {
+    navLinkEls.forEach((el => el.classList.remove("active")));
+    target.classList.add("active");
+    const keyData = target.parentNode.dataset.text;
+    divTextEl.textContent = panelText[keyData];
+  }));
 
   /*
   2. Необходимо сделать так, чтобы при изменении input'а менялся и размер шрифта
@@ -68,6 +77,12 @@
   перетаскивании ползунка.
    */
 
+  const inputEl = document.querySelector("input[type='range']");
+  const inputDivEl = document.querySelector("#inputDiv");
+  inputEl.value = + window.getComputedStyle(inputDivEl).getPropertyValue("font-size").split('p')[0];
+  inputEl.addEventListener('input', () => {
+    inputDivEl.style.fontSize = `${inputEl.value}px`
+  });
 
 </script>
 </body>
